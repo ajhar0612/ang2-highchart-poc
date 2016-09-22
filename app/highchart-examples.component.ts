@@ -14,6 +14,12 @@ export class HighchartExamplesComponent implements OnInit {
 	donutChartData = {};
 	columnChartData = {};
 
+	line1ChartData = {};
+	line2ChartData = {};
+
+	multiLineChartData = {};
+
+
 	constructor(private http: Http) { }
 
 	ngOnInit(): any {
@@ -104,12 +110,185 @@ export class HighchartExamplesComponent implements OnInit {
 			},
 			series: [
 				{
-					name: 'NC',
+					name: 'CC',
 					data: [27, 25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5],
 					pointStart: Date.UTC(2016, 8, 1, 1, 10, 35, 0),
-            		pointInterval: 1000
+					pointInterval: 1000
 				}
 			]
 		};
+
+		this.line1ChartData = {
+
+			title: {
+				text: ''
+			},
+			xAxis: {
+				type: 'datetime',
+				tickInterval: 5 * 60 * 1000,
+				labels: {
+					rotation: -60,
+					style: {
+						fontSize: '13px',
+						fontFamily: 'Verdana, sans-serif'
+					}
+				}
+			},
+			yAxis: {
+				title: {
+					text: 'Unit'
+				},
+				plotLines: [{
+					value: 0,
+					width: 1,
+					color: '#808080'
+				}],
+				labels: {
+					formatter: function () {
+						return this.value + "%";
+					}
+				}
+			},
+			tooltip: {
+				valueSuffix: '%'
+			},
+			legend: {
+				enabled: false,
+			},
+			series: [{
+				name: 'Series 1',
+				data: [5.0, 8.9, 18.5, 14.3, 19.2, 20.5, 22.2, 25.5, 24.3, 19.3, 18.9, 20.6],
+				pointStart: Date.UTC(2016, 8, 1, 12, 20, 0, 0),
+				pointInterval: 5 * 60 * 1000,
+			}]
+		}
+
+		this.line2ChartData = {
+
+			title: {
+				text: ''
+			},
+			xAxis: {
+				type: 'datetime',
+				tickInterval: 5 * 60 * 1000,
+				labels: {
+					rotation: -60,
+					style: {
+						fontSize: '13px',
+						fontFamily: 'Verdana, sans-serif'
+					}
+				}
+			},
+			yAxis: {
+				title: {
+					text: 'Unit'
+				},
+				plotLines: [{
+					value: 0,
+					width: 1,
+					color: '#808080'
+				}],
+				labels: {
+					formatter: function () {
+						return this.value + "%";
+					}
+				}
+			},
+			tooltip: {
+				valueSuffix: '%'
+			},
+			legend: {
+				enabled: false,
+			},
+			series: [{
+				name: 'Series 2',
+				linecap: "round",
+				data: [10.1, 15.1, 18.5, 20.6, 40.2, 50.7, 80.9, 60.2, 50.1, 40.9, 30.0, 10.0],
+				pointStart: Date.UTC(2016, 8, 1, 12, 20, 0, 0),
+				pointInterval: 5 * 60 * 1000,
+				marker: {
+					symbol: "circle"
+				}
+			}]
+		}
+
+		this.multiLineChartData = {
+
+			title: {
+				text: ''
+			},
+			xAxis: {
+				type: 'datetime',
+				tickInterval: 5 * 60 * 1000,
+				labels: {
+					rotation: -60,
+					style: {
+						fontSize: '13px',
+						fontFamily: 'Verdana, sans-serif'
+					}
+				}
+			},
+			yAxis: {
+				title: {
+					text: 'Unit'
+				},
+				plotLines: [{
+					value: 0,
+					width: 1,
+					color: '#808080'
+				}],
+				labels: {
+					formatter: function () {
+						if (this.isFirst)
+							return this.value + "%";
+						else
+							return this.value;
+					}
+				}
+			},
+			tooltip: {
+				valueSuffix: '%'
+			},
+			legend: {
+				layout: 'horizontal',
+				align: 'right',
+				verticalAlign: 'top',
+				symbolWidth: 8
+			},
+			series: [{
+				name: 'Series 1',
+				data: [5.0, 8.9, 18.5, 14.3, 19.2, 20.5, 22.2, 25.5, 24.3, 19.3, 18.9, 20.6],
+				pointStart: Date.UTC(2016, 8, 1, 12, 20, 0, 0),
+				pointInterval: 5 * 60 * 1000,
+				marker: {
+					symbol: "circle"
+				}
+			}, {
+				name: 'Series 2',
+				linecap: "round",
+				data: [0.1, 1.1, 1.8, 2.6, 4.2, 5.7, 8.9, 10.2, 10.1, 9.9, 10.0, 10.0],
+				pointStart: Date.UTC(2016, 8, 1, 12, 20, 0, 0),
+				pointInterval: 5 * 60 * 1000,
+				marker: {
+					symbol: "circle"
+				}
+			}, {
+				name: 'Series 3',
+				data: [3.4, 5.8, 9.4, 16.5, 18.3, 17.0, 15.5, 14.9, 15.3, 15.0, 15.4, 14.9],
+				pointStart: Date.UTC(2016, 8, 1, 12, 20, 0, 0),
+				pointInterval: 5 * 60 * 1000,
+				marker: {
+					symbol: "circle"
+				}
+			}, {
+				name: 'Series 4',
+				data: [1.1, 16.3, 18.8, 14.5, 11.9, 10.2, 7.5, 6.6, 5.2, 5.3, 5.0, 4.8],
+				pointStart: Date.UTC(2016, 8, 1, 12, 20, 0, 0),
+				pointInterval: 5 * 60 * 1000,
+				marker: {
+					symbol: "circle"
+				}
+			}]
+		}
 	}
 }
