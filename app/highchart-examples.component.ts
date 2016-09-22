@@ -11,7 +11,8 @@ import { Ng2Highcharts, Ng2Highmaps, Ng2Highstocks } from 'ng2-highcharts';
 
 export class HighchartExamplesComponent implements OnInit {
 
-	sampleData = {};
+	donutChartData = {};
+	columnChartData = {};
 
 	constructor(private http: Http) { }
 
@@ -28,7 +29,7 @@ export class HighchartExamplesComponent implements OnInit {
 				color: colors[1]
 			}];
 
-		this.sampleData = {
+		this.donutChartData = {
 			chart: {
 				type: 'pie',
 				margin: [0, 0, 0, 0],
@@ -72,5 +73,43 @@ export class HighchartExamplesComponent implements OnInit {
 				}
 			}]
 		}
+
+		this.columnChartData = {
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: 'Bar Chart'
+			},
+			plotOptions: {
+				column: {
+					showInLegend: false
+				}
+			},
+			xAxis: {
+				type: 'datetime',
+				tickInterval: 1000,
+				labels: {
+					rotation: -60,
+					style: {
+						fontSize: '13px',
+						fontFamily: 'Verdana, sans-serif'
+					}
+				}
+			},
+			yAxis: {
+				title: {
+					text: ''
+				}
+			},
+			series: [
+				{
+					name: 'NC',
+					data: [27, 25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5],
+					pointStart: Date.UTC(2016, 8, 1, 1, 10, 35, 0),
+            		pointInterval: 1000
+				}
+			]
+		};
 	}
 }
