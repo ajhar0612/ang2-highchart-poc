@@ -12,7 +12,11 @@ import { Ng2Highcharts, Ng2Highmaps, Ng2Highstocks } from 'ng2-highcharts';
 export class HighchartExamplesComponent implements OnInit {
 
 	donutChartData = {};
+	semiDonutChartData = {};
+	semiMultiDonutChartData = {};
+
 	columnChartData = {};
+	stagedColumnChartData = {};
 
 	line1ChartData = {};
 	line2ChartData = {};
@@ -81,6 +85,114 @@ export class HighchartExamplesComponent implements OnInit {
 				}
 			}]
 		}
+		this.semiDonutChartData = {
+			chart: {
+				type: 'pie',
+				plotBackgroundColor: null,
+				plotBorderWidth: 0,
+				plotShadow: false
+			},
+			title: {
+				text: '<b>20%</b><br>Title',
+				floating: true,
+				verticalAlign: 'bottom',
+				y: -20,
+				useHTML: true
+			},
+			plotOptions: {
+				pie: {
+					size: '60%',
+					shadow: false,
+					showInLegend: true,
+					startAngle: -90,
+					endAngle: 90,
+					center: ['50%', '100%']
+				}
+			},
+			legend: {
+				enabled: false,
+			},
+			series: [{
+				name: 'Votes',
+				data: data = [{
+					name: 'Yes',
+					y: 30,
+					color: colors[0]
+				}, {
+					name: 'No',
+					y: 70,
+					color: colors[1]
+				}],
+				innerSize: '85%',
+				dataLabels: {
+					enabled: false
+				}
+			}]
+		}
+
+		this.semiMultiDonutChartData = {
+			chart: {
+				type: 'pie',
+				plotBackgroundColor: null,
+				plotBorderWidth: 0,
+				plotShadow: false
+			},
+			title: {
+				text: '<b>20%</b><br>Title',
+				floating: true,
+				verticalAlign: 'bottom',
+				y: -20,
+				useHTML: true
+			},
+			plotOptions: {
+				pie: {
+					size: '60%',
+					shadow: false,
+					showInLegend: true,
+					startAngle: -90,
+					endAngle: 90,
+					center: ['50%', '100%']
+				}
+			},
+			legend: {
+				enabled: false,
+			},
+			series: [{
+				name: 'Votes',
+				data: data = [{
+					name: 'Yes',
+					y: 30,
+					color: colors[0]
+				}, {
+					name: 'No',
+					y: 70,
+					color: colors[1]
+				}],
+				size: '100%',
+				innerSize: '85%',
+				dataLabels: {
+					enabled: false
+				}
+			},
+			{
+				name: 'Votes',
+				data: data = [{
+					name: 'Yes',
+					y: 30,
+					color: colors[0]
+				}, {
+					name: 'No',
+					y: 70,
+					color: colors[1]
+				}],
+				size: '80%',
+				innerSize: '95%',
+				dataLabels: {
+					enabled: false
+				}
+			}
+			]
+		}
 
 		this.columnChartData = {
 			chart: {
@@ -116,6 +228,50 @@ export class HighchartExamplesComponent implements OnInit {
 					data: [27, 25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5],
 					pointStart: Date.UTC(2016, 8, 1, 1, 10, 35, 0),
 					pointInterval: 1000
+				}
+			]
+		};
+
+		this.stagedColumnChartData = {
+			chart: {
+				type: 'column'
+			},
+			title: {
+				text: 'Bar Chart'
+			},
+			plotOptions: {
+				column: {
+					showInLegend: false,
+					stacking: 'normal'
+				}
+			},
+			xAxis: {
+				categories: ['First', 'Second', 'Third', 'Forth', 'Fifth'],
+				labels: {
+					rotation: -60,
+					style: {
+						fontSize: '13px',
+						fontFamily: 'Verdana, sans-serif'
+					}
+				}
+			},
+			yAxis: {
+				title: {
+					text: ''
+				}
+			},
+			series: [
+				{
+					name: 'Series1',
+					data: [27, 25, 23, 21, 19]
+				},
+				{
+					name: 'Series2',
+					data: [13, 11, 9, 7, 5]
+				},
+				{
+					name: 'Series3',
+					data: [14, 11, 9, 10, 9]
 				}
 			]
 		};
@@ -310,12 +466,12 @@ export class HighchartExamplesComponent implements OnInit {
 				gridLineWidth: 1,
 				gridLineDashStyle: 'ShortDot',
 				labels: {
-					formatter: function() {
+					formatter: function () {
 						if (this.isLast)
 							return 'Today';
 						else
-        					return Highcharts.dateFormat('%e/%d', this.value);
-    				}
+							return Highcharts.dateFormat('%e/%d', this.value);
+					}
 				}
 			},
 
@@ -324,9 +480,9 @@ export class HighchartExamplesComponent implements OnInit {
 				tickInterval: 4 * 60 * 60 * 1000,
 				maxPadding: 0.2,
 				labels: {
-					formatter: function() {
-        				return Highcharts.dateFormat('%I:%M %p', this.value);
-    				}
+					formatter: function () {
+						return Highcharts.dateFormat('%I:%M %p', this.value);
+					}
 				}
 			},
 			plotOptions: {
@@ -345,33 +501,33 @@ export class HighchartExamplesComponent implements OnInit {
 			},
 			series: [{
 				data: [
-					{x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 5, 13, 0), z: 13.8},
-					{x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 18, 18, 0), z: 14.7},
-					{x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 3, 24, 0), z: 15.8},
-					{x: Date.UTC(2016, 8, 14), y: Date.UTC(2016, 8, 12, 20, 0, 0), z: 12}
+					{ x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 5, 13, 0), z: 13.8 },
+					{ x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 18, 18, 0), z: 14.7 },
+					{ x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 3, 24, 0), z: 15.8 },
+					{ x: Date.UTC(2016, 8, 14), y: Date.UTC(2016, 8, 12, 20, 0, 0), z: 12 }
 				]
 			},
 			{
 				data: [
-					{x: Date.UTC(2016, 8, 10), y: Date.UTC(2016, 8, 12, 6, 10, 0), z: 13.8},
-					{x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 8, 18, 0), z: 14.7},
-					{x: Date.UTC(2016, 8, 14), y: Date.UTC(2016, 8, 12, 13, 29, 0), z: 15.8},
-					{x: Date.UTC(2016, 8, 16), y: Date.UTC(2016, 8, 12, 15, 40, 0), z: 12}
+					{ x: Date.UTC(2016, 8, 10), y: Date.UTC(2016, 8, 12, 6, 10, 0), z: 13.8 },
+					{ x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 8, 18, 0), z: 14.7 },
+					{ x: Date.UTC(2016, 8, 14), y: Date.UTC(2016, 8, 12, 13, 29, 0), z: 15.8 },
+					{ x: Date.UTC(2016, 8, 16), y: Date.UTC(2016, 8, 12, 15, 40, 0), z: 12 }
 				]
 			},
 			{
 				data: [
-					{x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 8, 35, 0), z: 13.8},
-					{x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 11, 19, 0), z: 14.7},
-					{x: Date.UTC(2016, 8, 15), y: Date.UTC(2016, 8, 12, 13, 34, 0), z: 15.8},
-					{x: Date.UTC(2016, 8, 16), y: Date.UTC(2016, 8, 12, 18, 38, 0), z: 12}
+					{ x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 8, 35, 0), z: 13.8 },
+					{ x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 11, 19, 0), z: 14.7 },
+					{ x: Date.UTC(2016, 8, 15), y: Date.UTC(2016, 8, 12, 13, 34, 0), z: 15.8 },
+					{ x: Date.UTC(2016, 8, 16), y: Date.UTC(2016, 8, 12, 18, 38, 0), z: 12 }
 				]
 			},
 			{
 				data: [
-					{x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 5, 13, 0), z: 13.8},
-					{x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 18, 18, 0), z: 14.7},
-					{x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 22, 0, 0), z: 15.8}
+					{ x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 5, 13, 0), z: 13.8 },
+					{ x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 18, 18, 0), z: 14.7 },
+					{ x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 22, 0, 0), z: 15.8 }
 				]
 			}
 			]
