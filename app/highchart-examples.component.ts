@@ -19,6 +19,8 @@ export class HighchartExamplesComponent implements OnInit {
 
 	multiLineChartData = {};
 
+	bubbleChartData = {};
+
 
 	constructor(private http: Http) { }
 
@@ -289,6 +291,91 @@ export class HighchartExamplesComponent implements OnInit {
 					symbol: "circle"
 				}
 			}]
+		}
+
+		this.bubbleChartData = {
+
+			chart: {
+				type: 'bubble',
+				zoomType: 'xy'
+			},
+
+			title: {
+				text: ''
+			},
+
+			xAxis: {
+				type: 'datetime',
+				tickInterval: 24 * 60 * 60 * 1000,
+				gridLineWidth: 1,
+				gridLineDashStyle: 'ShortDot',
+				labels: {
+					formatter: function() {
+						if (this.isLast)
+							return 'Today';
+						else
+        					return Highcharts.dateFormat('%e/%d', this.value);
+    				}
+				}
+			},
+
+			yAxis: {
+				type: 'datetime',
+				tickInterval: 4 * 60 * 60 * 1000,
+				maxPadding: 0.2,
+				labels: {
+					formatter: function() {
+        				return Highcharts.dateFormat('%I:%M %p', this.value);
+    				}
+				}
+			},
+			plotOptions: {
+				series: {
+					dataLabels: {
+						enabled: false,
+						format: '{point.name}'
+					}
+				}
+			},
+			legend: {
+				layout: 'horizontal',
+				align: 'right',
+				verticalAlign: 'top',
+				symbolWidth: 8
+			},
+			series: [{
+				data: [
+					{x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 5, 13, 0), z: 13.8},
+					{x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 18, 18, 0), z: 14.7},
+					{x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 3, 24, 0), z: 15.8},
+					{x: Date.UTC(2016, 8, 14), y: Date.UTC(2016, 8, 12, 20, 0, 0), z: 12}
+				]
+			},
+			{
+				data: [
+					{x: Date.UTC(2016, 8, 10), y: Date.UTC(2016, 8, 12, 6, 10, 0), z: 13.8},
+					{x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 8, 18, 0), z: 14.7},
+					{x: Date.UTC(2016, 8, 14), y: Date.UTC(2016, 8, 12, 13, 29, 0), z: 15.8},
+					{x: Date.UTC(2016, 8, 16), y: Date.UTC(2016, 8, 12, 15, 40, 0), z: 12}
+				]
+			},
+			{
+				data: [
+					{x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 8, 35, 0), z: 13.8},
+					{x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 11, 19, 0), z: 14.7},
+					{x: Date.UTC(2016, 8, 15), y: Date.UTC(2016, 8, 12, 13, 34, 0), z: 15.8},
+					{x: Date.UTC(2016, 8, 16), y: Date.UTC(2016, 8, 12, 18, 38, 0), z: 12}
+				]
+			},
+			{
+				data: [
+					{x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 5, 13, 0), z: 13.8},
+					{x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 18, 18, 0), z: 14.7},
+					{x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 22, 0, 0), z: 15.8}
+				]
+			}
+			]
+
 		}
 	}
 }
