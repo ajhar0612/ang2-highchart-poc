@@ -4,7 +4,6 @@
 			<div [ng2-highcharts]="donutChartData" class="graph"></div>
 		</td>
 		<td width="50%">
-
 			<div [ng2-highcharts]="columnChartData" class="graph"></div>
 		</td>
 	</tr>
@@ -13,8 +12,8 @@
 			<div [ng2-highcharts]="line1ChartData" class="graph"></div>
 		</td>
 		<td width="50%">
-
-			<div [ng2-highcharts]="line2ChartData" class="graph"></div>
+			<!--<div [ng2-highcharts]="line2ChartData" class="graph"></div>-->
+			<div [ng2-highcharts]="labledDonutChartData" class="graph"></div>
 		</td>
 	</tr>
 	<tr>
@@ -25,7 +24,6 @@
 			<div [ng2-highcharts]="semiDonutChartData" class="graph"></div>
 		</td>
 	</tr>
-
 	<tr>
 		<td width="50%">
 			<div [ng2-highcharts]="stagedColumnChartData" class="graph"></div>
@@ -33,7 +31,7 @@
 		<td width="50%">
 			<div [ng2-highcharts]="semiMultiDonutChartData" class="graph"></div>
 		</td>
-	</tr>
+	</tr> 
 
 </table>
 

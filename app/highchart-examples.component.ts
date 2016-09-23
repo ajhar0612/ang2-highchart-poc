@@ -14,6 +14,7 @@ export class HighchartExamplesComponent implements OnInit {
 	donutChartData = {};
 	semiDonutChartData = {};
 	semiMultiDonutChartData = {};
+	labledDonutChartData = {};
 
 	columnChartData = {};
 	stagedColumnChartData = {};
@@ -58,7 +59,10 @@ export class HighchartExamplesComponent implements OnInit {
 				pie: {
 					size: '100%',
 					shadow: false,
-					showInLegend: true
+					showInLegend: true,
+					dataLabels: {
+                    	enabled: false
+					}
 				}
 			},
 			legend: {
@@ -85,6 +89,42 @@ export class HighchartExamplesComponent implements OnInit {
 				}
 			}]
 		}
+
+		this.labledDonutChartData = {
+			chart: {
+				type: 'pie',
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: false
+			},
+			title: {
+				text: ''
+			},
+			plotOptions: {
+				pie: {
+					size: '100%',
+					dataLabels: {
+                    	enabled: true
+					}
+				}
+			},
+			legend: {
+				enabled: false
+			},
+			series: [{
+				name: 'Votes',
+				data: data,
+				size: '80%',
+				innerSize: '70%',
+				dataLabels: {
+                formatter: function () {
+                    return this.y > 5 ? this.point.name : null;
+                },
+                distance: 60
+            }
+			}]
+		}
+
 		this.semiDonutChartData = {
 			chart: {
 				type: 'pie',
