@@ -510,7 +510,7 @@ export class HighchartExamplesComponent implements OnInit {
 						if (this.isLast)
 							return 'Today';
 						else
-							return Highcharts.dateFormat('%e/%d', this.value);
+							return Highcharts.dateFormat('%e/%m', this.value);
 					}
 				}
 			},
@@ -567,7 +567,7 @@ export class HighchartExamplesComponent implements OnInit {
 				data: [
 					{ x: Date.UTC(2016, 8, 11), y: Date.UTC(2016, 8, 12, 5, 13, 0), z: 13.8 },
 					{ x: Date.UTC(2016, 8, 12), y: Date.UTC(2016, 8, 12, 18, 18, 0), z: 14.7 },
-					{ x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 22, 0, 0), z: 15.8 }
+					{ x: Date.UTC(2016, 8, 13), y: Date.UTC(2016, 8, 12, 6, 0, 0), z: 15.8 }
 				]
 			}
 			]
